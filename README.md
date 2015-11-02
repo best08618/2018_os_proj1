@@ -3,8 +3,8 @@ OS_2015_proj1
 
 Programming assignment #1 due by Nov. 15.
 
-1.	Scheduling simulation
-Parent process:<basic requirement for cpu scheduling>
+# Scheduling simulation
+##Parent process:<basic requirement for cpu scheduling>
 Create 10 child processes from a parent process
 Parent process schedules child processes according to the round-robin scheduling policy.
 Assume your own scheduling parameters: e.g. time quantum, and timer tick interval.
@@ -18,11 +18,11 @@ The parent process gives time slice to the child process by sending ipc message 
 Students may want to refer to msgget, msgsnd, msgrcv system calls. Please note that there is IPC_NOWAIT flag.
 The parent process accounts for the waiting time of all the child processes.
 
-Child process:<basic requirement for cpu scheduling>
+##Child process:<basic requirement for cpu scheduling>
 A child process simulates the execution of a user process. Workload consists of infinite loop of dynamic CPU-burst and I/O-burst. The execution begins with two parameters: (cpu_burst, io_burst). Each value is randomly generated. 
 When a user process receives the time slice from OS, the user process makes progress. To simulate this, the child process makes progress when it is in cpu-burst phase. Besides, the parent process sends ipc message to the currently running child process. When the child process takes ipc message from msgq, it decreases cpu-burst value. 
 
-<optional requirement for io involvement>
+###<optional requirement for io involvement>
 The child process makes I/O requests after CPU-burst. To simulate this, child accounts for the remaining cpu-burst. If cpu-burst reaches to zero, the child sends ipc message to the parent process with the next io-burst time. 
 
 Parent process: <optional requirement for scheduling through processes with cpu-bursts and io-bursts>
@@ -31,7 +31,7 @@ The parent process should remember io-burst value of the child process. Whenever
 When the remaining io-burst value of a process reaches to zero, the parent process puts the child process back to the run-queue. (so that it can be scheduled after I/O completion)
 The scheduling is triggered by several events, for example: the expiry of time quantum (of a process), process makes I/O request (completing cpu-burst).
 
-The output of the program:<basic requirement for output>
+##The output of the program:<basic requirement for output>
 Print out the scheduling operations in the following format:
 (at time t, process pid gets cpu time, remaining cpu-burst) run-queue dump, wait-queue dump
 Print out all the operations to the following file: schedule_dump.txt
