@@ -4,7 +4,8 @@ OS_2015_proj1
 Programming assignment #1 due by Nov. 15.
 
 # Scheduling simulation
-##Parent process:<basic requirement for cpu scheduling>
+# Basic requirement for cpu scheduling
+##Parent process:
 Create 10 child processes from a parent process
 Parent process schedules child processes according to the round-robin scheduling policy.
 Assume your own scheduling parameters: e.g. time quantum, and timer tick interval.
@@ -22,10 +23,11 @@ The parent process accounts for the waiting time of all the child processes.
 A child process simulates the execution of a user process. Workload consists of infinite loop of dynamic CPU-burst and I/O-burst. The execution begins with two parameters: (cpu_burst, io_burst). Each value is randomly generated. 
 When a user process receives the time slice from OS, the user process makes progress. To simulate this, the child process makes progress when it is in cpu-burst phase. Besides, the parent process sends ipc message to the currently running child process. When the child process takes ipc message from msgq, it decreases cpu-burst value. 
 
-###<optional requirement for io involvement>
-The child process makes I/O requests after CPU-burst. To simulate this, child accounts for the remaining cpu-burst. If cpu-burst reaches to zero, the child sends ipc message to the parent process with the next io-burst time. 
+#optional requirement for io involvement
+##The child process:
+Children makes I/O requests after CPU-burst. To simulate this, child accounts for the remaining cpu-burst. If cpu-burst reaches to zero, the child sends ipc message to the parent process with the next io-burst time. 
 
-Parent process: <optional requirement for scheduling through processes with cpu-bursts and io-bursts>
+##Parent process: <optional requirement for scheduling through processes with cpu-bursts and io-bursts>
 The parent process receives ipc message from a child process, it checks whether the child begins io-burst. Then, the scheduler takes the child process out of the run-queue, and moves the child process to the wait-queue. (so that the child cannot get scheduled until it finishes io)
 The parent process should remember io-burst value of the child process. Whenever time tick occurs, the parent process decreases the io-burst value. (for all the processes in the wait-queue)
 When the remaining io-burst value of a process reaches to zero, the parent process puts the child process back to the run-queue. (so that it can be scheduled after I/O completion)
