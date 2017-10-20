@@ -1,4 +1,5 @@
 # os_proj1
+Project #1: Scheduling
 OS_2015_proj1
 
 Programming assignment #1 due by Nov. 15.
