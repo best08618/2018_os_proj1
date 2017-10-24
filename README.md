@@ -2,7 +2,7 @@
 Project #1: Scheduling
 OS_2015_proj1
 
-Programming assignment #1 due by Nov. 15.
+Programming assignment #1 due by Nov. 12.
 
 # Scheduling simulation
 # Basic requirement for cpu scheduling
